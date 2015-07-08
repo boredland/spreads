@@ -69,7 +69,7 @@ class DjvuBindPlugin(HookPlugin, OutputHooksMixin):
         # TODO: Add table of contents
 
         djvu_file = target_path/"book.djvu"
-        cmd = ["djvubind", unicode(tmpdir), '--tesseract-options="-l deu -psm 1 hocr"']
+        cmd = ["djvubind", unicode(tmpdir), '--no-ocr']
         logger.debug("Running " + " ".join(cmd))
         subprocess.check_output(cmd, stderr=subprocess.STDOUT)
         os.rename("book.djvu", unicode(djvu_file))
